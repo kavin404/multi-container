@@ -22,3 +22,17 @@ after_sucess:
   - docker push kavin1/multi-nginx
   - docker push kavin1/multi-server
   - docker push kavin1/multi-worker
+
+
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'ap-southeast-1'
+  app: 'multi-docker-test'
+  env: 'MultiDockerTest-env'
+  bucket_name: "elasticbeanstalk-ap-southeast-1-964317254124"
+  bucket_path: "multi-docker-test"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $SECRET_ACCESS_KEY
